@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Recomment;
+use App\Models\Recommendation;
 use Illuminate\Http\Request;
 
-class RecommentController extends Controller
+class RecommendationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class RecommentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Recomment  $recomment
+     * @param  \App\Models\Recommendation  $recommendation
      * @return \Illuminate\Http\Response
      */
-    public function show(Recomment $recomment)
+    public function show(Recommendation $recommendation)
     {
         //
     }
@@ -52,10 +52,10 @@ class RecommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Recomment  $recomment
+     * @param  \App\Models\Recommendation  $recommendation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Recomment $recomment)
+    public function edit(Recommendation $recommendation)
     {
         //
     }
@@ -64,10 +64,10 @@ class RecommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Recomment  $recomment
+     * @param  \App\Models\Recommendation  $recommendation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recomment $recomment)
+    public function update(Request $request, Recommendation $recommendation)
     {
         //
     }
@@ -75,10 +75,10 @@ class RecommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Recomment  $recomment
+     * @param  \App\Models\Recommendation  $recommendation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Recomment $recomment)
+    public function destroy(Recommendation $recommendation)
     {
         //
     }

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('recomments', function (Blueprint $table) {
+        Schema::create('recommendations', function (Blueprint $table) {
             $table->char('id', 21)->primary();
             $table->string('name')->unique();//-,SELL,STRONG_SELL,NEUTRAL,BUY,STRONG_BUY
             $table->longText('description')->nullable();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recomments');
+        Schema::dropIfExists('recommendations');
     }
 };
