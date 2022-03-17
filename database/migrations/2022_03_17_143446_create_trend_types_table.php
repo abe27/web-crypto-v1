@@ -13,17 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('profit_limits', function (Blueprint $table) {
+        Schema::create('trend_types', function (Blueprint $table) {
             $table->char('id', 21)->primary();
-            $table->char('profile_id', 21);
-            $table->char('exchange_id', 21);
-            $table->decimal('take_profit', 8, 2)->nullable()->default(4);
-            $table->decimal('stop_loss', 8, 2)->nullable()->default(4);
+            $table->string('name')->unique();//-,SELL,STRONG_SELL,NEUTRAL,BUY,STRONG_BUY
             $table->longText('description')->nullable();
             $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
-            $table->foreign('profile_id')->references('id')->on('profiles')->cascadeOnDelete();
-            $table->foreign('exchange_id')->references('id')->on('exchange_apis')->cascadeOnDelete();
         });
     }
 
@@ -34,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profit_limits');
+        Schema::dropIfExists('trend_types');
     }
 };

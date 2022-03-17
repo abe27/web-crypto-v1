@@ -13,16 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('profit_limits', function (Blueprint $table) {
+        Schema::create('robot_specials', function (Blueprint $table) {
             $table->char('id', 21)->primary();
             $table->char('profile_id', 21);
             $table->char('exchange_id', 21);
-            $table->decimal('take_profit', 8, 2)->nullable()->default(4);
-            $table->decimal('stop_loss', 8, 2)->nullable()->default(4);
-            $table->longText('description')->nullable();
+            $table->char('trend_type_id', 21);
+            $table->decimal('gte_percent', 8, 2)->nullable()->default(4);
+            $table->enum('reactive', ['-', 'Open', 'Close', 'Hold'])->nullable()->default('-');
             $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
             $table->foreign('profile_id')->references('id')->on('profiles')->cascadeOnDelete();
+            $table->foreign('trend_type_id')->references('id')->on('trend_types')->cascadeOnDelete();
             $table->foreign('exchange_id')->references('id')->on('exchange_apis')->cascadeOnDelete();
         });
     }
@@ -34,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profit_limits');
+        Schema::dropIfExists('robot_specials');
     }
 };
