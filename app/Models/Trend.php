@@ -7,13 +7,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
-class TrendType extends Model
+class Trend extends Model
 {
     use HasFactory, HasApiTokens, Uuids;
 
     public $fillable = [
-        'name',
-        'description',
+        'exchange_id',
+        'trend_id',
+        'symbol_id',
+        'recomm_id',
+        'price',
+        'percent',
+        'is_open',
         'is_active',
     ];
 }

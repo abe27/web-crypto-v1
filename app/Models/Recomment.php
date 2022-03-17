@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
-class Momentum extends Model
+class Recomment extends Model
 {
     use HasFactory, HasApiTokens, Uuids;
 

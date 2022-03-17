@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Momentum;
+use App\Models\Recomment;
 use Illuminate\Http\Request;
 
-class MomentumController extends Controller
+class RecommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class MomentumController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Momentum  $momentum
+     * @param  \App\Models\Recomment  $recomment
      * @return \Illuminate\Http\Response
      */
-    public function show(Momentum $momentum)
+    public function show(Recomment $recomment)
     {
         //
     }
@@ -52,10 +52,10 @@ class MomentumController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Momentum  $momentum
+     * @param  \App\Models\Recomment  $recomment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Momentum $momentum)
+    public function edit(Recomment $recomment)
     {
         //
     }
@@ -64,10 +64,10 @@ class MomentumController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Momentum  $momentum
+     * @param  \App\Models\Recomment  $recomment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Momentum $momentum)
+    public function update(Request $request, Recomment $recomment)
     {
         //
     }
@@ -75,10 +75,10 @@ class MomentumController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Momentum  $momentum
+     * @param  \App\Models\Recomment  $recomment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Momentum $momentum)
+    public function destroy(Recomment $recomment)
     {
         //
     }

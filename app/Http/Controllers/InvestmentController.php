@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TrendType;
+use App\Models\Investment;
 use Illuminate\Http\Request;
 
-class TrendTypeController extends Controller
+class InvestmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class TrendTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TrendType  $trendType
+     * @param  \App\Models\Investment  $investment
      * @return \Illuminate\Http\Response
      */
-    public function show(TrendType $trendType)
+    public function show(Investment $investment)
     {
         //
     }
@@ -52,10 +52,10 @@ class TrendTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TrendType  $trendType
+     * @param  \App\Models\Investment  $investment
      * @return \Illuminate\Http\Response
      */
-    public function edit(TrendType $trendType)
+    public function edit(Investment $investment)
     {
         //
     }
@@ -64,10 +64,10 @@ class TrendTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TrendType  $trendType
+     * @param  \App\Models\Investment  $investment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TrendType $trendType)
+    public function update(Request $request, Investment $investment)
     {
         //
     }
@@ -75,10 +75,10 @@ class TrendTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TrendType  $trendType
+     * @param  \App\Models\Investment  $investment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TrendType $trendType)
+    public function destroy(Investment $investment)
     {
         //
     }

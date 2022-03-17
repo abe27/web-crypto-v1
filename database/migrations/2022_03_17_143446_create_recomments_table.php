@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('trend_types', function (Blueprint $table) {
+        Schema::create('recomments', function (Blueprint $table) {
             $table->char('id', 21)->primary();
             $table->string('name')->unique();//-,SELL,STRONG_SELL,NEUTRAL,BUY,STRONG_BUY
             $table->longText('description')->nullable();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trend_types');
+        Schema::dropIfExists('recomments');
     }
 };
