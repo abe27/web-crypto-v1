@@ -7,17 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
-class RobotSchedule extends Model
+class Symbols extends Model
 {
     use HasFactory, HasApiTokens, Uuids;
 
     public $fillable = [
-        'profile_id',
-        'exchange_id',
-        'momentum_id',
-        'title',
-        'on_hours',
-        'on_minutes',
+        'group_id',
+        'name',
+        'description',
+        'flag_url',
         'is_active',
     ];
 }
