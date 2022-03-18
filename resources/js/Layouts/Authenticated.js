@@ -183,7 +183,7 @@ const Authenticated = ({ auth, header, children }) => {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gray-200 font-sans leading-normal tracking-normal">
+    <div className="min-h-screen font-sans leading-normal tracking-normal">
       <nav id="header" className="bg-white fixed w-full z-10 top-0 shadow">
         <div className="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0">
           <div className="w-1/2 pl-2 md:pl-0">

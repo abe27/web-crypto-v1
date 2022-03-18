@@ -1,4 +1,4 @@
-const Header = ({ title = 'Header' }) => {
+const Header = ({ title = 'Header', started='Started on 29 Jan 2020' }) => {
   return (
     <div className="my-6 lg:my-12 container px-6 mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between pb-4 border-b border-gray-300">
       <div>
@@ -45,7 +45,7 @@ const Header = ({ title = 'Header' }) => {
                 <polyline points="14 7 21 7 21 14" />
               </svg>
             </span>
-            <span> Trending</span>
+            <span>Trending</span>
           </li>
           <li className="flex items-center mt-3 md:mt-0">
             <span className="mr-2">
@@ -69,7 +69,7 @@ const Header = ({ title = 'Header' }) => {
                 <line x1={3} y1={21} x2={21} y2={21} />
               </svg>
             </span>
-            <span>Started on 29 Jan 2020</span>
+            <span>{started}</span>
           </li>
         </ul>
       </div>
