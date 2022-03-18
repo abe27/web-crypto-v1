@@ -23,7 +23,7 @@ return new class extends Migration
             $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
             $table->foreign('profile_id')->references('id')->on('profiles')->cascadeOnDelete();
-            $table->foreign('recomm_id')->references('id')->on('recomments')->cascadeOnDelete();
+            $table->foreign('recomm_id')->references('id')->on('recommendations')->cascadeOnDelete();
             $table->foreign('exchange_id')->references('id')->on('exchange_apis')->cascadeOnDelete();
         });
     }

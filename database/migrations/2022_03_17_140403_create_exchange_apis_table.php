@@ -19,6 +19,7 @@ return new class extends Migration
             $table->char('exchange_group_id', 21);
             $table->char('exchange_id', 21);
             $table->char('currency_id', 21);
+            $table->char('time_frame_id', 21);
             $table->date('api_expire');
             $table->string('api_key');
             $table->string('api_secret');
@@ -28,6 +29,7 @@ return new class extends Migration
             $table->foreign('exchange_group_id')->references('id')->on('exchange_groups')->cascadeOnDelete();
             $table->foreign('exchange_id')->references('id')->on('exchanges')->cascadeOnDelete();
             $table->foreign('currency_id')->references('id')->on('currencies')->cascadeOnDelete();
+            $table->foreign('time_frame_id')->references('id')->on('time_frames')->cascadeOnDelete();
         });
     }
 

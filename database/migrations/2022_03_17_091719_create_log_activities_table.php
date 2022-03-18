@@ -13,13 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('exchanges', function (Blueprint $table) {
+        Schema::create('log_activities', function (Blueprint $table) {
             $table->char('id', 21)->primary();
-            $table->string('name',50)->unique();
-            $table->string('api_url');
-            $table->longText('description')->nullable();
-            $table->boolean('is_active')->nullable()->default(false);
+            $table->string('subject');
+            $table->string('url');
+            $table->string('method');
+            $table->string('ip');
+            $table->string('agent')->nullable();
+            $table->uuid('user_id');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
         });
     }
 
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exchanges');
+        Schema::dropIfExists('log_activities');
     }
 };

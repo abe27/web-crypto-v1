@@ -191,7 +191,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // ...
+        'LogActivity' => App\Helpers\LogActivity::class,
     ])->toArray(),
 
 ];
