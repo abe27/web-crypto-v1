@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TimeFrame;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class TimeFrameController extends Controller
 {
@@ -14,7 +15,7 @@ class TimeFrameController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('TimeFrame');
     }
 
     /**

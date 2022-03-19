@@ -19,13 +19,15 @@ return new class extends Migration
             $table->char('exchange_id', 21);
             $table->char('momemtum_id', 21);
             $table->enum('title', ['-', 'New', 'Subscribe'])->nullable()->default('-');
-            $table->enum('on_hours', ['*', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24'])->nullable()->default('1');
-            $table->enum('on_minutes', ['*', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24'])->nullable()->default('15');
+            $table->char('on_hours', 21);
+            $table->char('on_minute', 21);
             $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
             $table->foreign('profile_id')->references('id')->on('profiles')->cascadeOnDelete();
             $table->foreign('exchange_id')->references('id')->on('exchange_apis')->cascadeOnDelete();
             $table->foreign('momemtum_id')->references('id')->on('momemtums')->cascadeOnDelete();
+            $table->foreign('on_hours')->references('id')->on('period_hours')->cascadeOnDelete();
+            $table->foreign('on_minute')->references('id')->on('period_minutes')->cascadeOnDelete();
         });
     }
 

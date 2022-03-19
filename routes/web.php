@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdministratorController;
+use App\Http\Controllers\TimeFrameController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,13 +17,17 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
+
+Route::get('/', function() {
+    return redirect()->route('login');
 });
 
 Route::get('/dashboard', function () {
@@ -39,5 +45,14 @@ Route::get('/api-data', function () {
 Route::get('/blog', function () {
     return Inertia::render('Blog');
 })->middleware(['auth', 'verified'])->name('blog.index');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::prefix('/administrator')->group(function () {
+        Route::get('/index', [AdministratorController::class, 'index'])->name('administrator.index');
+        Route::prefix('/time')->group(function () {
+            Route::get('/index', [TimeFrameController::class, 'index'])->name('administrator.time_frame.index');
+        });
+    });
+});
 
 require __DIR__.'/auth.php';

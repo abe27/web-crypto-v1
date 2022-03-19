@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\LogActivity;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -37,6 +38,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        LogActivity::addToLog('เข้าสู่ระบบ');
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
@@ -48,6 +51,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
+        LogActivity::addToLog('ออกจากระบบ');
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\LogActivity;
 use App\Http\Controllers\Controller;
+use App\Models\Permission;
+use App\Models\Profile;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -49,6 +52,19 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+
+        // บันทึกข้อมูลการทำกิจกรรม
+        LogActivity::addToLog('สมัครสมาชิกใหม่');
+
+        // สร้างโปรไฟล์
+        $profile = Profile::create(['user_id' => $user->id, 'is_active' => true]);
+
+        // กำหนด permission
+        Permission::create([
+            'profile_id' => $profile->id,
+            'permission' => 'user',
+            'is_active' => true
+        ]);
 
         return redirect(RouteServiceProvider::HOME);
     }
