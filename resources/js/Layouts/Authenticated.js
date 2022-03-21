@@ -39,7 +39,6 @@ const DropdownList = (i) => {
 
 const mainMenu = (i) => {
   if (i.menu_group == "Main") {
-    console.dir(i.children);
     let txt_border = "";
     let txt_color = i.text_color;
     let name = route().current().substring(0, 3);
@@ -312,7 +311,6 @@ const Authenticated = ({ auth, header, children }) => {
         description: "Log Out",
       },
     ];
-    console.dir(data);
     setMenuItem(data);
   };
 
@@ -337,7 +335,7 @@ const Authenticated = ({ auth, header, children }) => {
               href={route("dashboard.index")}
             >
               <i className="fa-solid fa-chart-simple text-green-600 pr-3"></i>
-              eRad(eRad Bot Guide)
+              iRab(System For Analysis)
             </a>
           </div>
           <div className="w-1/2 pr-0">

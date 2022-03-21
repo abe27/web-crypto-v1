@@ -2,12 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\LogActivity;
 use App\Models\TimeFrame;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 
 class TimeFrameController extends Controller
 {
+
+    private $breadcrumbs = [
+        [
+            "id" => 1,
+            "name" => "หน้าแรก",
+            "icon" => false,
+            "current" => false,
+            "href" => "dashboard.index",
+        ],
+        [
+            "id" => 2,
+            "name" => "ข้อมูลช่วงเวลา",
+            "icon" => true,
+            "current" => true,
+            "href" => "administrator.time_frame.index",
+        ],
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +35,15 @@ class TimeFrameController extends Controller
      */
     public function index()
     {
-        return Inertia::render('TimeFrame');
+        $timeFrame = TimeFrame::where('is_active', true)->get();
+
+        $data = [
+            "title" => "จัดการช่วงเวลาในการดึงข้อมูล",
+            "description" => "จัดการช่วงเวลาในการดึงข้อมูล",
+            "breadcrumbs" => $this->breadcrumbs,
+            'data' => $timeFrame
+        ];
+        return Inertia::render('TimeFrame/TimeFrame', $data);
     }
 
     /**
@@ -25,7 +53,25 @@ class TimeFrameController extends Controller
      */
     public function create()
     {
-        //
+        $breadcrumbs = [
+            "id" => 3,
+            "name" => "สร้างเอกสารใหม่",
+            "icon" => true,
+            "current" => true,
+            "href" => "welcome",
+        ];
+        $this->breadcrumbs[1]["current"] = false;
+
+        array_push($this->breadcrumbs, $breadcrumbs);
+
+
+        $data = [
+            "title" => "เพิ่มข้อมูลช่วงเวลาในการดึงข้อมูล",
+            "description" => "ทำการเพิ่มข้อมูลช่วงเวลาในการดึงข้อมูล",
+            "breadcrumbs" => $this->breadcrumbs,
+            'data' => null
+        ];
+        return Inertia::render('TimeFrame/AddTimeFrame', $data);
     }
 
     /**
@@ -36,7 +82,19 @@ class TimeFrameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'string|required|unique:time_frames|max:255',
+        ]);
+
+        $timeFrame = new TimeFrame();
+        $timeFrame->name = $request->name;
+        $timeFrame->description = $request->description;
+        $timeFrame->is_active = $request->is_active;
+        $timeFrame->save();
+
+        LogActivity::addToLog('เพิ่มข้อมูล time frame ' . $timeFrame->id);
+
+        return redirect()->back();
     }
 
     /**

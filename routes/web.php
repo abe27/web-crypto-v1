@@ -28,7 +28,7 @@ use Inertia\Inertia;
 
 Route::get('/', function() {
     return redirect()->route('login');
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -51,6 +51,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/index', [AdministratorController::class, 'index'])->name('administrator.index');
         Route::prefix('/time')->group(function () {
             Route::get('/index', [TimeFrameController::class, 'index'])->name('administrator.time_frame.index');
+            Route::get('/create', [TimeFrameController::class, 'create'])->name('administrator.time_frame.create');
+            Route::post('/store', [TimeFrameController::class, 'store'])->name('administrator.time_frame.store');
         });
     });
 });

@@ -1,17 +1,27 @@
-const TableView = () => {
+const head = [
+  { name: "#", description: "", className: "py-3 px-6 text-left" },
+  { name: "หัวข้อ", description: "", className: "py-3 px-6 text-left" },
+  { name: "รายละเอียด", description: "", className: "py-3 px-6 text-left" },
+  { name: "แก้ไขล่าสุด", description: "", className: "py-3 px-6 text-center" },
+  { name: "สถานะ", description: "", className: "py-3 px-6 text-center" },
+  { name: "", description: "", className: "py-3 px-6 text-center" },
+];
+const TableView = ({ thead = head }) => {
   return (
     <table className="min-w-max w-full table-auto">
       <thead>
         <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-          <th className="py-3 px-6 text-left">Project</th>
-          <th className="py-3 px-6 text-left">Client</th>
-          <th className="py-3 px-6 text-center">Users</th>
-          <th className="py-3 px-6 text-center">Status</th>
-          <th className="py-3 px-6 text-center">Actions</th>
+          {thead &&
+            thead.map((i) => (
+              <th key={i.name} className={i.className}>
+                {i.name}
+              </th>
+            ))}
         </tr>
       </thead>
       <tbody className="text-gray-600 text-sm font-light">
         <tr className="border-b border-gray-200 hover:bg-gray-100">
+          <td className="py-3 px-6 text-left">1</td>
           <td className="py-3 px-6 text-left whitespace-nowrap">
             <div className="flex items-center">
               <div className="mr-2">
@@ -130,6 +140,7 @@ const TableView = () => {
           </td>
         </tr>
         <tr className="border-b border-gray-200 bg-gray-50 hover:bg-gray-100">
+          <td className="py-3 px-6 text-left">2</td>
           <td className="py-3 px-6 text-left">
             <div className="flex items-center">
               <div className="mr-2">
@@ -230,6 +241,7 @@ const TableView = () => {
           </td>
         </tr>
         <tr className="border-b border-gray-200 hover:bg-gray-100">
+          <td className="py-3 px-6 text-left">3</td>
           <td className="py-3 px-6 text-left">
             <div className="flex items-center">
               <div className="mr-2">
@@ -330,6 +342,7 @@ const TableView = () => {
           </td>
         </tr>
         <tr className="border-b border-gray-200 bg-gray-50 hover:bg-gray-100">
+          <td className="py-3 px-6 text-left">4</td>
           <td className="py-3 px-6 text-left">
             <div className="flex items-center">
               <div className="mr-2">
@@ -430,6 +443,7 @@ const TableView = () => {
           </td>
         </tr>
         <tr className="border-b border-gray-200 hover:bg-gray-100">
+          <td className="py-3 px-6 text-left">5</td>
           <td className="py-3 px-6 text-left">
             <div className="flex items-center">
               <div className="mr-2">
@@ -530,6 +544,7 @@ const TableView = () => {
           </td>
         </tr>
         <tr className="border-b border-gray-200 bg-gray-50 hover:bg-gray-100">
+          <td className="py-3 px-6 text-left">6</td>
           <td className="py-3 px-6 text-left">
             <div className="flex items-center">
               <div className="mr-2">
@@ -630,6 +645,7 @@ const TableView = () => {
           </td>
         </tr>
         <tr className="border-b border-gray-200 hover:bg-gray-100">
+          <td className="py-3 px-6 text-left">7</td>
           <td className="py-3 px-6 text-left">
             <div className="flex items-center">
               <div className="mr-2">
@@ -730,6 +746,7 @@ const TableView = () => {
           </td>
         </tr>
         <tr className="border-b border-gray-200 bg-gray-50 hover:bg-gray-100">
+          <td className="py-3 px-6 text-left">8</td>
           <td className="py-3 px-6 text-left">
             <div className="flex items-center">
               <div className="mr-2">
