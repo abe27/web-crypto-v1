@@ -51,8 +51,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/index', [AdministratorController::class, 'index'])->name('administrator.index');
         Route::prefix('/time')->group(function () {
             Route::get('/index', [TimeFrameController::class, 'index'])->name('administrator.time_frame.index');
+            Route::get('/get', [TimeFrameController::class, 'get'])->name('administrator.time_frame.get');
             Route::get('/create', [TimeFrameController::class, 'create'])->name('administrator.time_frame.create');
             Route::post('/store', [TimeFrameController::class, 'store'])->name('administrator.time_frame.store');
+            Route::put('/update/{timeFrame}', [TimeFrameController::class, 'update'])->name('administrator.time_frame.put');
         });
     });
 });

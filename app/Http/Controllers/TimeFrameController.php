@@ -46,6 +46,12 @@ class TimeFrameController extends Controller
         return Inertia::render('TimeFrame/TimeFrame', $data);
     }
 
+    public function get()
+    {
+        $timeFrame = TimeFrame::get();
+        return response()->json($timeFrame);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -128,7 +134,11 @@ class TimeFrameController extends Controller
      */
     public function update(Request $request, TimeFrame $timeFrame)
     {
-        //
+        $timeFrame->name = $request->name;
+        $timeFrame->description = $request->description;
+        $timeFrame->is_active = $request->is_active;
+        $timeFrame->save();
+        return response()->json($timeFrame);
     }
 
     /**
