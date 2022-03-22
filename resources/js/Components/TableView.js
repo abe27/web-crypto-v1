@@ -76,13 +76,7 @@ const TableView = ({ thead = head, tbody = null, updateActive=null, updateData=n
     return txt;
   };
 
-  const handleEnableDisable = async (i) => {
-    i.is_active = !i.is_active;
-    console.dir(i);
-    let up = await axios.put(route("administrator.time_frame.put", i.id), i);
-    console.dir(await up.data);
-  };
-
+  const handleEnableDisable = async (i) => updateActive(i)
   const handleShow = (i) => console.dir(i);
   const handleDelete = (i) => console.dir(i);
 

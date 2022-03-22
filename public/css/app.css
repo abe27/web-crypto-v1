@@ -1137,6 +1137,9 @@ input[type=file]::file-selector-button:hover {
 .max-w-7xl {
   max-width: 80rem;
 }
+.max-w-xl {
+  max-width: 36rem;
+}
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1642,6 +1645,9 @@ input[type=file]::file-selector-button:hover {
 }
 .tracking-normal {
   letter-spacing: 0em;
+}
+.tracking-wider {
+  letter-spacing: 0.05em;
 }
 .text-gray-500 {
   --tw-text-opacity: 1;
