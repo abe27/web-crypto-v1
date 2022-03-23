@@ -2,7 +2,7 @@ import { useState } from "react";
 import Authenticated from "@/Layouts/Authenticated";
 import { HeaderControl, MetaHeader, TableView } from "@/Components";
 import { useForm } from "@inertiajs/inertia-react";
-import { useToast } from '@chakra-ui/react'
+import Swal from "sweetalert2";
 
 const UpdateTimeFrame = (props) => {
   const { data, setData, put, processing, errors, reset } = useForm({
@@ -13,7 +13,6 @@ const UpdateTimeFrame = (props) => {
 
   const [cancelBtn, setCancelBtn] = useState(false);
   const [saveBtn, setSaveBtn] = useState(false);
-  const toast = useToast()
 
   console.dir(props);
   const handleCancelButton = () => {
@@ -26,29 +25,18 @@ const UpdateTimeFrame = (props) => {
     setSaveBtn(true);
     put(route(props.href, props.data.id), {
       onError: (e) => {
-        toast({
-          title: 'เกิดข้อผิดพลาด',
-          description: "กรุณาตรวจสอบข้อมูลอีกครั้งด้วย",
-          position: 'top-right',
-          status: 'error',
-          duration: 3500,
-          isClosable: true,
-        })
+        Swal.fire(
+          "เกิดข้อผิดพลาด!",
+          "กรุณาตรวจสอบข้อมูลอีกครั้งด้วย",
+          "error"
+        ).then((r) => setSaveBtn(false));
       },
       onSuccess: () => {
-        setSaveBtn(false);
-        toast({
-          title: 'แจ้งผลการบันทึกข้อมูล',
-          description: "บันทึกข้อมูลเรียบร้อยแล้ว",
-          position: 'top-right',
-          status: 'success',
-          duration: 3500,
-          isClosable: true,
-        })
-
-        // setTimeout(() => window.location.href = route('administrator.time_frame.index'), 3000);
-      }
-    })
+        Swal.fire("ดีใจด้วย!", "บันทึกข้อมูลเรียบร้อยแล้ว", "success").then(
+          (r) => setSaveBtn(false)
+        );
+      },
+    });
     // setData({
     //   name: '', description: '', is_active: false
     // })
@@ -126,6 +114,7 @@ const UpdateTimeFrame = (props) => {
                   aria-describedby="is_active"
                   type="checkbox"
                   className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                  checked={data.is_active}
                   value={data.is_active}
                   onChange={onHandleChange}
                 />

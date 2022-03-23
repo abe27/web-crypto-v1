@@ -4,9 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\PeriodHour;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class PeriodHourController extends Controller
 {
+    private $breadcrumbs = [
+        [
+            "id" => 1,
+            "name" => "หน้าแรก",
+            "icon" => false,
+            "current" => false,
+            "href" => "dashboard.index",
+        ],
+        [
+            "id" => 2,
+            "name" => "กำหนดช่วงเวลา",
+            "icon" => true,
+            "current" => true,
+            "href" => "administrator.period.hour.index",
+        ],
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +32,20 @@ class PeriodHourController extends Controller
      */
     public function index()
     {
-        //
+        $periodHour = PeriodHour::where('is_active', true)->get();
+        $data = [
+            "title" => "จัดการข้อมูลกำหนดช่วงเวลาแบบรายชั่วโมง",
+            "description" => "จัดการข้อมูลกำหนดช่วงเวลาแบบรายชั่วโมง",
+            "breadcrumbs" => $this->breadcrumbs,
+            'data' => $periodHour
+        ];
+        return Inertia::render('PeriodHour/PeriodHour', $data);
+    }
+
+    public function get()
+    {
+        $periodHour = PeriodHour::get();
+        return response()->json($periodHour);
     }
 
     /**
@@ -24,7 +55,26 @@ class PeriodHourController extends Controller
      */
     public function create()
     {
-        //
+        $breadcrumbs = [
+            "id" => 3,
+            "name" => "สร้างเอกสารใหม่",
+            "icon" => true,
+            "current" => true,
+            "href" => "welcome",
+        ];
+        $this->breadcrumbs[1]["current"] = false;
+
+        array_push($this->breadcrumbs, $breadcrumbs);
+
+
+        $data = [
+            "title" => "เพิ่มข้อมูลกำหนดช่วงเวลาแบบรายชั่วโมง",
+            "description" => "ทำการเพิ่มข้อมูลกำหนดช่วงเวลาแบบรายชั่วโมง",
+            "breadcrumbs" => $this->breadcrumbs,
+            "href" => "administrator.period.hour.store",
+            'data' => null
+        ];
+        return Inertia::render('PeriodHour/AddPeriodHour', $data);
     }
 
     /**

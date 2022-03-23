@@ -185,7 +185,7 @@ const Authenticated = ({ auth, header, children }) => {
             name: "จัดการช่วงเวลา(Hour)",
             description: "",
             icon: "fa-solid fa-angle-right",
-            route: "administrator.index",
+            route: "administrator.period.hour.index",
             method: "get",
           },
           {

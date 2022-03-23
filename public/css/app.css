@@ -754,16 +754,6 @@ input[type=file]::file-selector-button:hover {
   background: #4B5563;
 }
 
-[role="tab"].active,[role="tab"].active:hover {
-  color: #1C64F2;
-  border-color: #1C64F2;
-}
-
-.dark [role="tab"].active,.dark [role="tab"].active:hover {
-  color: #1C64F2;
-  border-color: #1C64F2;
-}
-
 *, ::before, ::after {
   --tw-translate-x: 0;
   --tw-translate-y: 0;
@@ -1815,7 +1805,7 @@ input[type=file]::file-selector-button:hover {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
 /*!
- * Font Awesome Free 6.1.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  * Copyright 2022 Fonticons, Inc.
  */
@@ -3463,6 +3453,12 @@ readers do not read off random characters that represent icons */
 }
 .fa-child::before {
   content: "\f1ae";
+}
+.fa-child-dress::before {
+  content: "\e59c";
+}
+.fa-child-reaching::before {
+  content: "\e59d";
 }
 .fa-child-rifle::before {
   content: "\e4e0";
@@ -8145,7 +8141,7 @@ readers do not read off random characters that represent icons */
   border-width: 0;
 }
 /*!
- * Font Awesome Free 6.1.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  * Copyright 2022 Fonticons, Inc.
  */
@@ -8157,7 +8153,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.woff2?d9ed9b6f8138a03cd29dde39879aefac) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.ttf?e2e080ba746195932d7ff9268b7831ee) format("truetype");
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.woff2?0caf4c6cf244a90efcc5bf6d4e5578c1) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.ttf?0d03b1bbd1d62c1e128489eb2d4fb85d) format("truetype");
 }
 .far,
 .fa-regular {
@@ -8165,7 +8161,7 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
 }
 /*!
- * Font Awesome Free 6.1.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  * Copyright 2022 Fonticons, Inc.
  */
@@ -8177,7 +8173,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff2?1089d04e572b44b3d54a651652f1dd77) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.ttf?6aef0a3f12850e08137426f474124d32) format("truetype");
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff2?59edf72a325ac2048d6077f64773674f) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.ttf?e615bbcb258550973c165dfc0d871c96) format("truetype");
 }
 .fas,
 .fa-solid {
@@ -8185,7 +8181,7 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
 }
 /*!
- * Font Awesome Free 6.1.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  * Copyright 2022 Fonticons, Inc.
  */
@@ -8197,7 +8193,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff2?a4ac62083ead21bd1ea2120fb530451b) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.ttf?8dddb1b4cd1f65b03167456d0109bfc7) format("truetype");
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff2?ebb7a127d2d8ee6f183274b7557718ab) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.ttf?b823fc0dbb5a5f0c21bbcc2a268f92aa) format("truetype");
 }
 .fab,
 .fa-brands {

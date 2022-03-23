@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdministratorController;
+use App\Http\Controllers\PeriodHourController;
 use App\Http\Controllers\TimeFrameController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -56,6 +57,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/store', [TimeFrameController::class, 'store'])->name('administrator.time_frame.store');
             Route::get('/show/{timeFrame}', [TimeFrameController::class, 'show'])->name('administrator.time_frame.show');
             Route::put('/update/{timeFrame}', [TimeFrameController::class, 'update'])->name('administrator.time_frame.put');
+            Route::delete('/delete/{timeFrame}', [TimeFrameController::class, 'destroy'])->name('administrator.time_frame.destroy');
+        });
+
+        Route::prefix('/period')->group(function () {
+            Route::get('/index', [PeriodHourController::class, 'index'])->name('administrator.period.hour.index');
+            Route::get('/get', [PeriodHourController::class, 'get'])->name('administrator.period.hour.get');
+            Route::get('/create', [PeriodHourController::class, 'create'])->name('administrator.period.hour.create');
         });
     });
 });

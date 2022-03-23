@@ -169,6 +169,7 @@ class TimeFrameController extends Controller
      */
     public function destroy(TimeFrame $timeFrame)
     {
-        //
+        $timeFrame->delete();
+        return redirect()->back();
     }
 }

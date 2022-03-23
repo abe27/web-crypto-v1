@@ -132,10 +132,10 @@ const TableView = ({
               <td className="py-3 px-6 text-center">{reStatus(i.is_active)}</td>
               <td className="py-3 px-6 text-center">
                 <div className="flex item-center justify-center">
-                  <EnableDisable
+                  {/* <EnableDisable
                     iObj={i}
                     handleClick={() => updateActive(i)}
-                  />
+                  /> */}
                   <div
                     className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110 hover:cursor-pointer"
                     onClick={() => updateData(i)}
