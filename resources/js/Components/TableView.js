@@ -58,7 +58,14 @@ const EnableDisable = ({ iObj, handleClick }) => {
     </div>
   );
 };
-const TableView = ({ thead = head, tbody = null, updateActive=null, updateData=null, deleteData=null, reloadData=null }) => {
+
+const TableView = ({
+  thead = head,
+  tbody = null,
+  updateActive = null,
+  updateData = null,
+  deleteData = null
+}) => {
   const reStatus = (i) => {
     let txt = (
       <span className="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">
@@ -76,9 +83,20 @@ const TableView = ({ thead = head, tbody = null, updateActive=null, updateData=n
     return txt;
   };
 
-  const handleEnableDisable = async (i) => updateActive(i)
-  const handleShow = (i) => console.dir(i);
-  const handleDelete = (i) => console.dir(i);
+  const reDate = (d) => {
+    let x = new Date(d);
+    return (
+      x.getFullYear() +
+      "-" +
+      ("0" + (x.getMonth() + 1)).slice(-2) +
+      "-" +
+      ("0" + x.getDate()).slice(-2) +
+      " " +
+      ("0" + x.getHours()).slice(-2) +
+      ":" +
+      ("0" + x.getMinutes()).slice(-2)
+    );
+  };
 
   return (
     <table className="min-w-max w-full table-auto">
@@ -110,17 +128,17 @@ const TableView = ({ thead = head, tbody = null, updateActive=null, updateData=n
                   <span>{i.description}</span>
                 </div>
               </td>
-              <td className="py-3 px-6 text-center">{i.updated_at}</td>
+              <td className="py-3 px-6 text-center">{reDate(i.updated_at)}</td>
               <td className="py-3 px-6 text-center">{reStatus(i.is_active)}</td>
               <td className="py-3 px-6 text-center">
                 <div className="flex item-center justify-center">
                   <EnableDisable
                     iObj={i}
-                    handleClick={() => handleEnableDisable(i)}
+                    handleClick={() => updateActive(i)}
                   />
                   <div
                     className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110 hover:cursor-pointer"
-                    onClick={() => handleShow(i.id)}
+                    onClick={() => updateData(i)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +157,7 @@ const TableView = ({ thead = head, tbody = null, updateActive=null, updateData=n
                   <div className="w-4 mr-2">
                     <a
                       className="transform hover:text-purple-500 hover:scale-110 hover:cursor-pointer"
-                      onClick={() => handleDelete(i.id)}
+                      onClick={() => deleteData(i)}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

@@ -4,11 +4,11 @@ import { HeaderControl, MetaHeader, TableView } from "@/Components";
 import { useForm } from "@inertiajs/inertia-react";
 import { useToast } from '@chakra-ui/react'
 
-const AddTimeFrame = (props) => {
-  const { data, setData, post, processing, errors, reset } = useForm({
-    name: "",
-    description: "",
-    is_active: true,
+const UpdateTimeFrame = (props) => {
+  const { data, setData, put, processing, errors, reset } = useForm({
+    name: props.data.name,
+    description: props.data.description,
+    is_active: props.data.is_active,
   });
 
   const [cancelBtn, setCancelBtn] = useState(false);
@@ -24,7 +24,7 @@ const AddTimeFrame = (props) => {
   const handleSaveButton = (e) => {
     e.preventDefault();
     setSaveBtn(true);
-    post(route(props.href), {
+    put(route(props.href, props.data.id), {
       onError: (e) => {
         toast({
           title: 'เกิดข้อผิดพลาด',
@@ -52,7 +52,6 @@ const AddTimeFrame = (props) => {
     // setData({
     //   name: '', description: '', is_active: false
     // })
-    reset()
   };
 
   const onHandleChange = (event) => {
@@ -149,4 +148,4 @@ const AddTimeFrame = (props) => {
   );
 };
 
-export default AddTimeFrame;
+export default UpdateTimeFrame;

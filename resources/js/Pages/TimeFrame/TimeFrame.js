@@ -21,13 +21,12 @@ const TimeFrame = (props) => {
     // setTimeFrameData(null)
     i.is_active = !i.is_active;
     let up = await axios.put(route("administrator.time_frame.put", i.id), i);
-    // console.dir(await up.data);
-
-    // setTimeFrameData(timeFrameData => {
-    //   is_active: !is_active
-    // });
     handleReloadButton();
   };
+
+
+  const handleUpdateData = obj => window.location.href = route('administrator.time_frame.show', obj.id);
+  const handleDelete = obj => console.dir(obj);
 
   useEffect(() => handleReloadButton(), []);
 
@@ -48,7 +47,7 @@ const TimeFrame = (props) => {
       <div className="container mx-auto">
         <div className="w-full h-64 rounded">
           {/* Place your content here */}
-          <TableView tbody={timeFrameData} updateActive={handleUpdate} />
+          <TableView tbody={timeFrameData} updateActive={handleUpdate} updateData={handleUpdateData} deleteData={handleDelete} />
           {/* end page */}
         </div>
       </div>

@@ -78,6 +78,7 @@ const HeaderControl = ({
   handleCancelButton = false,
   saveLoading = false,
   handleSaveButton = false,
+  processing=false,
 }) => {
   return (
     <div className="my-6 lg:my-12 container mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between border-b border-gray-300">
@@ -118,6 +119,7 @@ const HeaderControl = ({
           ยกเลิก
         </button>
         <button
+          processing={processing}
           className="transition duration-150 ease-in-out hover:bg-indigo-600 focus:outline-none border bg-indigo-700 rounded text-white px-8 py-2 text-sm"
           onClick={handleSaveButton}
         >

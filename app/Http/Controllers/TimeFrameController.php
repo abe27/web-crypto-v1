@@ -48,7 +48,7 @@ class TimeFrameController extends Controller
 
     public function get()
     {
-        $timeFrame = TimeFrame::get();
+        $timeFrame = TimeFrame::orderBy('created_at')->get();
         return response()->json($timeFrame);
     }
 
@@ -75,6 +75,7 @@ class TimeFrameController extends Controller
             "title" => "เพิ่มข้อมูลช่วงเวลาในการดึงข้อมูล",
             "description" => "ทำการเพิ่มข้อมูลช่วงเวลาในการดึงข้อมูล",
             "breadcrumbs" => $this->breadcrumbs,
+            "href" => "administrator.time_frame.store",
             'data' => null
         ];
         return Inertia::render('TimeFrame/AddTimeFrame', $data);
@@ -111,7 +112,26 @@ class TimeFrameController extends Controller
      */
     public function show(TimeFrame $timeFrame)
     {
-        //
+        $breadcrumbs = [
+            "id" => 3,
+            "name" => "แก้ไขข้อมูล",
+            "icon" => true,
+            "current" => true,
+            "href" => "welcome",
+        ];
+        $this->breadcrumbs[1]["current"] = false;
+
+        array_push($this->breadcrumbs, $breadcrumbs);
+
+
+        $data = [
+            "title" => "แก้ไขข้อมูลช่วงเวลาในการดึงข้อมูล",
+            "description" => "ทำการแก้ไขข้อมูลช่วงเวลาในการดึงข้อมูล",
+            "breadcrumbs" => $this->breadcrumbs,
+            "href" => "administrator.time_frame.put",
+            'data' => $timeFrame
+        ];
+        return Inertia::render('TimeFrame/UpdateTimeFrame', $data);
     }
 
     /**
@@ -138,7 +158,7 @@ class TimeFrameController extends Controller
         $timeFrame->description = $request->description;
         $timeFrame->is_active = $request->is_active;
         $timeFrame->save();
-        return response()->json($timeFrame);
+        return redirect()->back()->with('data', $timeFrame);
     }
 
     /**
