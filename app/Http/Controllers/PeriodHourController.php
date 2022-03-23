@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\LogActivity;
 use App\Models\PeriodHour;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -85,7 +86,19 @@ class PeriodHourController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'string|required|unique:period_hours|max:255',
+        ]);
+
+        $periodHour = new PeriodHour();
+        $periodHour->name = $request->name;
+        $periodHour->description = $request->description;
+        $periodHour->is_active = $request->is_active;
+        $periodHour->save();
+
+        LogActivity::addToLog('เพิ่มข้อมูล period hour ' . $periodHour->id);
+
+        return redirect()->back();
     }
 
     /**

@@ -4,18 +4,25 @@ import { HeaderControl, MasterFormInput, MetaHeader } from "@/Components";
 import { useForm } from "@inertiajs/inertia-react";
 
 const AddPeriodHour = (props) => {
-  const { data, setData, post, processing, errors, reset} = useForm({
+  const { data, setData, post, processing, errors, reset } = useForm({
     name: "",
     description: "",
     is_active: false,
   });
+
+  const [resetForm, setResetForm] = useState(false);
   const [cancelBtn, setCancelBtn] = useState(false);
   const [saveBtn, setSaveBtn] = useState(false);
 
   const handleSaveButton = () => {
     setSaveBtn(true);
     console.dir(data);
-    setTimeout(() => setSaveBtn(false), 3500);
+    post(route("administrator.period.hour.store"), {
+      onSuccess: () => {
+        setSaveBtn(false);
+        setResetForm(true);
+      },
+    });
   };
 
   const handleCancelButton = () => {
@@ -26,9 +33,7 @@ const AddPeriodHour = (props) => {
   const inputData = (event) => {
     setData(
       event.name,
-      event.type === "checkbox"
-        ? event.checked
-        : event.value
+      event.type === "checkbox" ? event.checked : event.value
     );
   };
 
@@ -49,7 +54,7 @@ const AddPeriodHour = (props) => {
       <div className="container mx-auto px-6">
         <div className="w-full h-64 rounded">
           {/* Place your content here */}
-          <MasterFormInput formData={inputData} reset={reset} />
+          <MasterFormInput formData={inputData} resetForm={resetForm} />
         </div>
       </div>
     </Authenticated>

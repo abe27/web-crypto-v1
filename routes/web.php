@@ -64,6 +64,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/index', [PeriodHourController::class, 'index'])->name('administrator.period.hour.index');
             Route::get('/get', [PeriodHourController::class, 'get'])->name('administrator.period.hour.get');
             Route::get('/create', [PeriodHourController::class, 'create'])->name('administrator.period.hour.create');
+            Route::post('/store', [PeriodHourController::class, 'store'])->name('administrator.period.hour.store');
         });
     });
 });

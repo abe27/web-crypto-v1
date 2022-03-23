@@ -1,10 +1,12 @@
+import { useEffect } from "react";
 import { useForm } from "@inertiajs/inertia-react";
-const MasterFormInput = ({ formData, reset }) => {
-  const { data, setData } = useForm({
+const MasterFormInput = ({ formData, resetForm }) => {
+  const { data, setData, reset } = useForm({
     name: "",
     description: "",
     is_active: false,
   });
+
   const onHandleChange = (event) => {
     // event.preventDefault();
     console.dir(event.target.name);
@@ -18,6 +20,13 @@ const MasterFormInput = ({ formData, reset }) => {
 
     formData(event.target);
   };
+
+  useEffect(() => {
+    if (resetForm) {
+      console.log("reset form");
+      reset();
+    }
+  }, []);
   return (
     <div className="">
       <div className="mb-6">
